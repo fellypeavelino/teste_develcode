@@ -32,7 +32,20 @@ app.use(express.json());
 
 app.post('/process-payment', (req, res) => {
     const { pedidoId, valor } = req.body;
+    // Captura o valor do cabeçalho Authorization
+    const authorizationHeader = req.headers['authorization'];
 
+    if (!authorizationHeader) {
+        return res.status(400).json({ message: 'Authorization header is missing' });
+    }
+
+    console.log('Authorization:', authorizationHeader);
+
+    // Valida o valor do cabeçalho Authorization
+    if (authorizationHeader !== 'develcode') {
+        return res.status(401).json({ message: 'Invalid Authorization token' });
+    }
+    
     // Simular processamento de pagamento
     const sucesso = Math.random() > 0.5; // 50% de chance de sucesso
     console.log(sucesso,  pedidoId, valor );

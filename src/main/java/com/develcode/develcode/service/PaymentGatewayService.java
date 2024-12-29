@@ -48,6 +48,7 @@ public class PaymentGatewayService {
             Request request = new Request.Builder()
                     .url(PAYMENT_GATEWAY_URL)
                     .post(body)
+                    .addHeader("Authorization", "develcode") // Adiciona o cabeçalho Authorization
                     .build();
 
             // Envia a requisição e obtém a resposta
