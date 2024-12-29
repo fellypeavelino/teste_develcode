@@ -7,13 +7,13 @@ Este projeto é composto por dois microsserviços: `checkout` e `payment_gateway
 
 ## Endpoints
 
-### 1. **POST /checkout/criarPedido**
+### 1. **POST /api/pedidos**
 
 Esse endpoint cria um pedido de compra.
 
 #### Requisição
 
-- **URL**: `/checkout/criarPedido`
+- **URL**: `/api/pedidos`
 - **Método**: `POST`
 - **Headers**: 
   - `Content-Type`: `application/json`
