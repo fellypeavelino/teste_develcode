@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  node-app:
+    build: .
+    container_name: node-app
+    volumes:
+      - ./api-node:/usr/src/app   # Mapeia o diretório local ./api-node para o diretório /usr/src/app no container
+    ports:
+      - "3000:3000"               # Expondo a porta 3000 para o host
+    working_dir: /usr/src/app     # Define o diretório de trabalho dentro do container
+    command: npm start            # Comando para rodar o aplicativo Node.js
+    environment:
+      - NODE_ENV=development      # Definir o ambiente como desenvolvimento
