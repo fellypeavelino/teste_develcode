@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+api-node/node_modules
+api-node/package-lock.*
