@@ -16,10 +16,15 @@ public class NodeStarter {
     public void startNodeServer() {
         try {
             String currentDirectory = System.getProperty("user.dir");
-            System.out.println("teste "+currentDirectory);
-            // Executa o script start-node.sh
-            ProcessBuilder processBuilder = new ProcessBuilder(currentDirectory+"/start-node.bat");
-            processBuilder.start();
+            String os = System.getProperty("os.name").toLowerCase();
+            if (os.contains("win")) {
+                ProcessBuilder processBuilder = new ProcessBuilder("start-node.bat");
+                processBuilder.start();
+            } else {
+                ProcessBuilder processBuilder = new ProcessBuilder("./start-node.sh");
+                processBuilder.start();
+            }
+            
             System.out.println("Node server started successfully!");
         } catch (IOException e) {
             e.printStackTrace();
