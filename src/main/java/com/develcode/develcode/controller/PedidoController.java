@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
 
 /**
  *
@@ -32,6 +33,11 @@ public class PedidoController {
     @PostMapping
     public ResponseEntity<Pedido> criarPedido(@RequestBody @Valid PedidoDTO pedidoDTO) {
         Pedido pedido = modelMapper.map(pedidoDTO, Pedido.class);
-        return ResponseEntity.ok(pedidoService.criarPedido(pedido));
+
+        // Criando o pedido
+        Pedido pedidoCriado = pedidoService.criarPedido(pedido);
+
+        // Retornando a resposta com status 201 (Criado)
+        return new ResponseEntity<>(pedidoCriado, HttpStatus.CREATED); // 201
     }
 }
